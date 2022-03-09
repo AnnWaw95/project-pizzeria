@@ -53,6 +53,15 @@
   };
 
   const app = {
+    initMenu:function(){
+      const testProduct = new Product();
+      console.log('testProduct:', testProduct);
+    },
+    init.Data: function(){
+      const thisApp = this;
+
+      thisApp.data = dataSource;
+    },
     init: function(){
       const thisApp = this;
       console.log('*** App starting ***');
@@ -60,8 +69,16 @@
       console.log('classNames:', classNames);
       console.log('settings:', settings);
       console.log('templates:', templates);
+
+      thisApp.initMenu();
     },
   };
+class Product{
+  constructor(){
+    const thisProduct = this;
+    console.log('new Product:', thisProduct);
+  }
+}
 
-  app.init();
+app.init();
 }
