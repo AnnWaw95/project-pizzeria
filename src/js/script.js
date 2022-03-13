@@ -186,10 +186,17 @@
               price = price - option.price;
             }
           }
-        
+          const optionImage = thisProduct.element.querySelector('.' + paramId + '-' + optionId);
+          if(optionImage){
+            if(formData[paramId] && formData[paramId].includes(optionId)) {
+              optionImage.classList.add(classNames.menuProduct.imageVisible);
+            } else {
+              optionImage.classList.remove(classNames.menuProduct.imageVisible);
+            }
+          }
+          // update calculated price in the HTML
+          thisProduct.priceElem.innerHTML = price;
         }
-        // update calculated price in the HTML
-        thisProduct.priceElem.innerHTML = price;
       }
     }
   }
