@@ -180,7 +180,7 @@
             }
           } else {
             // check if the option is default
-            if(option.price) {
+            if(option.default) {
               // reduce price variable
               price = price - option.price;
             }
