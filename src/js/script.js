@@ -218,6 +218,7 @@
         const activeProduct = document.querySelectorAll(select.all.menuProductsActive);
         /* if there is active product and it's not thisProduct.element, remove class active from it */
         if (activeProduct != null && activeProduct != thisProduct.element) {
+          thisProduct.element.classList.add(classNames.menuProduct.wrapperActive);
           activeProduct.classList.remove(classNames.menuProduct.wrapperActive);
         }
         /* toggle active class on thisProduct.element */
