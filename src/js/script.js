@@ -56,16 +56,18 @@
     constructor(element){
       const thisWidget = this;
 
+      thisWidget.value = settings.amountWidget.defaultValue;
+
       thisWidget.getElements(element);
       thisWidget.setValue(thisWidget.input.value);
       thisWidget.initActions();
 
-      // console.log('AmountWidget:', thisWidget);
-      // console.log('constructor arguments:', element);
+      console.log('AmountWidget:', thisWidget);
+      console.log('constructor arguments:', element);
     }
-    getElements(element){
+    getElements(element) {
       const thisWidget = this;
-      
+
       thisWidget.element = element;
       thisWidget.input = thisWidget.element.querySelector(select.widgets.amount.input);
       thisWidget.linkDecrease = thisWidget.element.querySelector(select.widgets.amount.linkDecrease);
@@ -75,10 +77,9 @@
     setValue(value){
       const thisWidget = this;
       const newValue = parseInt(value);
-      if(thisWidget.value !==newValue && !isNaN(newValue) &&
-      newValue >= settings.amountWidget.defaultMin -1 && newValue <= settings.amountWidget.defaultMax +1){
+      if(thisWidget.value !== newValue && !isNaN(newValue) && 
+      newValue <= (settings.amountWidget.defaultMax + 1) && newValue >= (settings.amountWidget.defaultMin - 1)) {
         thisWidget.value = newValue;
-        
       }
       thisWidget.announce();
       thisWidget.input.value = thisWidget.value;
@@ -104,6 +105,7 @@
       const event = new Event('updated');
       thisWidget.element.dispatchEvent(event);
     }
+    
   }
 
   const app = {
@@ -260,10 +262,11 @@
         }
       }
     }
-    initAmountWidget(){
+    initAmountWidget() {
       const thisProduct = this;
+
       thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
-      thisProduct.amountWidgetElem.addEventListener('updated', function(){
+      thisProduct.amountWidgetElem.addEventListener('updated', function () {
         thisProduct.processOrder();
       });
     }
