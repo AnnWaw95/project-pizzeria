@@ -163,7 +163,9 @@
       const generatedHTML = templates.cartProduct(menuProduct);
       const generatedDOM = utils.createDOMFromHTML(generatedHTML);
       thisCart.dom.productList.appendChild(generatedDOM);
-      console.log('adding product', menuProduct);
+      thisCart.products.push(menuProduct);
+
+      console.log('thisCart.products', thisCart.products);
     }
     initActions(){
       const thisCart = this;
@@ -334,7 +336,7 @@
           
         }
       }
-      thisProduct.singlePrice = price;
+      thisProduct.priceSingle = price;
       /* multiply price by amount */
       price *= thisProduct.amountWidget.value;
       console.log(thisProduct.amountWidget.value);
@@ -365,7 +367,7 @@
         amount: thisProduct.amountWidget.value,
         priceSingle: thisProduct.priceSingle,
         price: thisProduct.amountWidget.value * thisProduct.priceSingle,
-        params: thisProduct.prepareCartProductParams()
+        params: thisProduct.prepareCartProductParams(),
       };
       return productSummary;
     }
