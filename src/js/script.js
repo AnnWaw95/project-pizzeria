@@ -167,7 +167,10 @@
       thisCart.dom.deliveryFee = document.querySelector(select.cart.deliveryFee),
       thisCart.dom.subtotalPrice = document.querySelector(select.cart.subtotalPrice),
       thisCart.dom.totalPrice = document.querySelectorAll(select.cart.totalPrice),
-      thisCart.dom.totalNumber = document.querySelector(select.cart.totalNumber);
+      thisCart.dom.totalNumber = document.querySelector(select.cart.totalNumber),
+      thisCart.dom.form = document.querySelector(select.cart.form),
+      thisCart.dom.phone = document.querySelector(select.cart.phone),
+      thisCart.dom.address = document.querySelector(select.cart.address);
     }
     
     add(menuProduct) {
@@ -193,6 +196,10 @@
         });
         /* toggle active class on thisProduct.element */
         thisCart.dom.wrapper.classList.toggle(classNames.cart.wrapperActive);
+      });
+      thisCart.dom.form.addEventListener('submit', function(event){
+        event.preventDefault();
+        thisCart.sendOrder();
       });
     }
 
@@ -242,6 +249,38 @@
       cartProduct.dom.wrapper.remove();
 
       thisCart.update();
+    }
+
+    sendOrder(){
+      const thisCart = this;
+      const url = settings.db.url + '/' + settings.db.orders;
+      const payload = {
+        address: thisCart.dom.address.value,
+        phone: thisCart.dom.phone.value,
+        totalPrice : thisCart.totalPrice,
+        subtotalPrice : thisCart.subtotalPrice,
+        totalNumber : thisCart.totalNumber,
+        deliveryFee : settings.cart.defaultDeliveryFee,
+        products : [],
+      };
+      for(let prod of thisCart.products) {
+        payload.products.push(prod.getData());
+      }
+      console.log(payload);
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      };
+      
+      fetch(url,options)
+        .then(function(response){
+          return response.json();
+        }).then(function(parsedResponse){
+          console.log('parsedResponse', parsedResponse);
+        });
     }
   }
 
@@ -308,7 +347,18 @@
         thisCartProduct.remove(event);
       });
     }
-
+    getData() {
+      const thisCartProduct = this;
+      const getData = {
+        id : thisCartProduct.id,
+        amount : thisCartProduct.amount,
+        price : thisCartProduct.price,
+        priceSingle : thisCartProduct.priceSingle,
+        name : thisCartProduct.name,
+        params : thisCartProduct.params,
+      };
+      return getData;
+    }
   }
 
   const app = {
