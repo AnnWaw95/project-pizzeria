@@ -1,5 +1,6 @@
-import { templates, select, utils, settings, classNames } from '../settings';
-import CartProduct from './CartProduct';
+import {settings, select, classNames, templates} from '../settings.js';
+import CartProduct from '../components/CartProduct.js';
+import utils from '../utils.js';
 
 class Cart {
   constructor(element){
@@ -80,11 +81,13 @@ class Cart {
 
     for(let totalPrice of thisCart.dom.totalPrice){
       totalPrice.innerHTML = thisCart.totalPrice;
-      console.log('totalPrice', thisCart.totalPrice);
+      // console.log('totalPrice', thisCart.totalPrice);
     }
       
     thisCart.dom.deliveryFee.innerHTML = thisCart.deliveryFee;
     thisCart.dom.totalNumber.innerHTML = thisCart.totalNumber;
+    thisCart.dom.subtotalPrice.innerHTML = thisCart.subtotalPrice;
+    thisCart.dom.totalPrice.innerHTML = thisCart.totalPrice;
   }
 
   remove(cartProduct){
