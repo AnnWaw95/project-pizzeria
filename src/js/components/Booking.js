@@ -7,7 +7,6 @@ class Booking{
     
     thisBooking.render(element);
     thisBooking.initWidgets();
-    thisBooking.getData();
   }
 
   render(element) {
@@ -24,10 +23,6 @@ class Booking{
     const thisBooking = this;
     thisBooking.peopleAmount = new AmountWidget(thisBooking.dom.peopleAmount);
     thisBooking.hoursAmount = new AmountWidget(thisBooking.dom.hoursAmount);
-
-    thisBooking.dom.wrapper.addEventListener('updated', function () {
-      thisBooking.updateDOM();
-    });
   }
 }
 
