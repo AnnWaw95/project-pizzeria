@@ -280,7 +280,10 @@
       "repeat": "daily",
       "duration": 2,
       "ppl": 3,
-      "starters": ["bread", "lemonWater"]
+      "starters": [
+        "bread",
+        "lemonWater"
+      ]
     },
     {
       "id": 3,
@@ -290,7 +293,10 @@
       "repeat": "daily",
       "duration": 2,
       "ppl": 3,
-      "starters": ["bread", "lemonWater"]
+      "starters": [
+        "bread",
+        "lemonWater"
+      ]
     },
     {
       "id": 4,
@@ -310,8 +316,36 @@
       "repeat": "daily",
       "duration": 2,
       "ppl": 3,
-      "starters": ["lemonWater"]
+      "starters": [
+        "lemonWater"
+      ]
     }
   ],
-  "bookings": []
+  "bookings": [
+    {
+      "date": "2022-03-31",
+      "hour": "0:00",
+      "table": null,
+      "duration": 2,
+      "people": 2,
+      "starters": [
+        "water",
+        "bread"
+      ],
+      "phone": "addfd",
+      "address": "fsfs",
+      "id": 1
+    },
+    {
+      "date": "2022-04-01",
+      "hour": "12:00",
+      "table": null,
+      "duration": 2,
+      "people": 2,
+      "starters": [],
+      "phone": "addfd",
+      "address": "fsfs",
+      "id": 2
+    }
+  ]
 }

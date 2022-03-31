@@ -159,12 +159,12 @@ class Booking{
     if (clickedTable.classList.contains(classNames.booking.tableBooked)) {
       console.log('table is booked');
       return;
-    } else if (clickedTable.classList.contains(classNames.booking.table)) {
+    } else {
       if (!clickedTable.classList.contains(classNames.booking.tableSelected)) {
         thisBooking.tableNumber = clickedTable.getAttribute(settings.booking.tableIdAttribute); 
       }
       thisBooking.removeSelected(clickedTable);
-      clickedTable.classList.toggle(classNames.booking.tableSelected);
+      clickedTable.classList.toggle(classNames.booking.selected);
      
     }
     thisBooking.tableId = clickedTable.getAttribute(settings.booking.tableIdAttribute);
@@ -179,8 +179,8 @@ class Booking{
       if (tableId === clickedElementId) {
         console.log(tableId);
       }
-      else if (table.classList.contains(classNames.booking.tableSelected))
-        table.classList.remove(classNames.booking.tableSelected);
+      else if (table.classList.contains(classNames.booking.selected))
+        table.classList.remove(classNames.booking.selected);
     }
   }
 
