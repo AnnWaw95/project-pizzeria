@@ -13,7 +13,7 @@
         "test:html": "html-validate src/*.html",
         "test:js": "eslint src/js/ --fix",
         "test:scss": "stylelint src/sass/ --fix",
-        "build": "npm-run-all build:* test", 
+        "build": "npm-run-all build:* test",
         "build:clean": "rimraf dist && mkdirp dist",
         "build:copy": "copyfiles -a -u 1 -e \"**/sass/**/*\" -e \"**/.gitkeep\" \"src/**/*\" dist",
         "build:sass": "sass --style=compressed --no-source-map src/sass:dist/css",
@@ -47,6 +47,8 @@
         "stylelint-scss": "^3.5.4"
     },
     "dependencies": {
+        "flatpickr": "^4.6.11",
+        "flickity": "^3.0.0",
         "json-server": "^0.17.0"
     }
 }
