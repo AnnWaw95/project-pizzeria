@@ -13,7 +13,7 @@ class Home{
 
   render(element){
     const thisHome = this;
-    const generatedHTML = templates.home;
+    const generatedHTML = templates.homeWidget();
     thisHome.dom = {};
     thisHome.dom.wrapper = element;
     thisHome.dom.wrapper.innerHTML = generatedHTML;
@@ -40,7 +40,6 @@ class Home{
     const element = document.querySelector('.main-carousel');
 
     new Flickity(element,{
-      wrapAround: true,
       prevNextButtons: false
     });
   }
