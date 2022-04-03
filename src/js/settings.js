@@ -12,6 +12,11 @@ export const select = {
     booking: '.booking-wrapper',
     home: '#home',
   },
+
+  nav: {
+    links: '.main-nav a',
+  },
+
   all: {
     menuProducts: '#product-list > .product',
     menuProductsActive: '#product-list > .product.active',
@@ -58,11 +63,11 @@ export const select = {
   home: {
     order: '.order-online',
     book: '.book-table',
+    link: '.link',
+    carousel: '.main-carousel',
   },
   
-  nav: {
-    links: '.main-nav a',
-  },
+
   // CODE ADDED START
   cart: {
     productList: '.cart__order-summary',

@@ -56,9 +56,16 @@ class Home{
         const idLink = clickedLink.getAttribute('href').replace('#', '');
  
         thisHome.clickedPage(idLink);
+
+        window.location.hash = '#/' + idLink;
+        console.log('pagechange');
       });
     }
   }
 }
+
+  
+
+
 
 export default Home;
