@@ -5,15 +5,14 @@ import Booking from './components/Booking.js';
 import Home from './components/Home.js';
 
 const app = {
-  initPages(){
+  initPages: function(){
     const thisApp = this;
 
     thisApp.pages = document.querySelector(select.containerOf.pages).children;
     thisApp.navLinks = document.querySelectorAll(select.nav.links);
     
-    const idFromHash = window.location.hash.replace('#/', '');
     
-    thisApp.activatePage(idFromHash);
+    const idFromHash = window.location.hash.replace('#/', '');
 
     let pageMatchingHash = thisApp.pages[0].id;
 
@@ -36,7 +35,6 @@ const app = {
         thisApp.activatePage(id);
         /* change URL hash */
         window.location.hash = '#/' + id;
-        console.log('pagechange');
       });
     }
   },
@@ -46,13 +44,13 @@ const app = {
 
     /* add class active to matching pages, remove from non-matching */
     for(let page of thisApp.pages){
-      page.classList.toggle(classNames.pages.active, page.id === pageId);
+      page.classList.toggle(classNames.pages.active, page.id == pageId);
     }
     /* add class active to matching links, remove from non-matching */
     for(let link of thisApp.navLinks){
       link.classList.toggle(
         classNames.nav.active, 
-        link.getAttribute('href') === '#' + pageId
+        link.getAttribute('href') == '#' + pageId
       );
     }
   },

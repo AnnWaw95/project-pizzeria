@@ -17,23 +17,10 @@ class Home{
     thisHome.dom = {};
     thisHome.dom.wrapper = element;
     thisHome.dom.wrapper.innerHTML = generatedHTML;
+    
   }
 
-  clickedPage(pageId) {
-    const thisHome = this;
-    thisHome.pages = document.querySelector(select.containerOf.pages).children;
-    thisHome.navLinks = document.querySelectorAll(select.nav.links);
-
-    for (let page of thisHome.pages) {
-      page.classList.toggle(classNames.pages.active, page.id === pageId);
-      for (let link of thisHome.navLinks) {
-        link.classList.toggle(
-          classNames.nav.active,
-          link.getAttribute('href') === '#/' + pageId
-        );
-      }
-    }
-  }
+ 
 
   initWidgets(){
     
@@ -50,18 +37,34 @@ class Home{
 
     for (let link of thisHome.links) {
       link.addEventListener('click', function (event) {
-        event.preventDefault();
         const clickedLink = this;
+        event.preventDefault();
         
-        const idLink = clickedLink.getAttribute('href').replace('#', '');
+        const id = clickedLink.getAttribute('href').replace('#', '');
  
-        thisHome.clickedPage(idLink);
+        thisHome.clickedPage(id);
 
-        window.location.hash = '#/' + idLink;
-        console.log('pagechange');
+        window.location.hash = '#/' + id;
       });
     }
   }
+
+  clickedPage(pageId) {
+    const thisHome = this;
+    thisHome.pages = document.querySelector(select.containerOf.pages).children;
+    thisHome.navLinks = document.querySelectorAll(select.nav.links);
+
+    for (let page of thisHome.pages) {
+      page.classList.toggle(classNames.pages.active, page.id == pageId);
+      for (let link of thisHome.navLinks) {
+        link.classList.toggle(
+          classNames.nav.active,
+          link.getAttribute('href') == '#' + pageId
+        );
+      }
+    }
+  }
+
 }
 
   
